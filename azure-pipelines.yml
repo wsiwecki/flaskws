@@ -36,14 +36,14 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
   
-- script: |
-  uses: actions/upload-artifact@v3
-  with:
-    name: python-app
-    path: |
-      . 
-      !venv/
-  displayName: 'Upload artifact for deployment jobs'
+#- script: |
+#  uses: actions/upload-artifact@v3
+##  with:
+#    name: python-app
+##    path: |
+#      . 
+#      !venv/
+#  displayName: 'Upload artifact for deployment jobs'
 
 
 - task: Deploy@0
