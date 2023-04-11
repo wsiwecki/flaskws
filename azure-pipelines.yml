@@ -8,8 +8,17 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+strategy:
+  matrix:
+    Python310:
+      python.version: '3.10'
 
 steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
@@ -17,3 +26,13 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- script: |
+    python -m venv venv
+    source venv/bin/activate
+  displayName: 'Create and start virtual environment'
+
+- script: |
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
