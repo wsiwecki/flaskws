@@ -70,7 +70,7 @@ stages:
   - deployment: DeploymentJob
     pool:
       vmImage: $(vmImageName)
-    environment: $(environmentName)
+    #environment: $(environmentName)
     strategy:
       runOnce:
         deploy:
