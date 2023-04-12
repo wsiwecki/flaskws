@@ -6,78 +6,84 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
-strategy:
-  matrix:
-    Python310:
-      python.version: '3.10'
 variables:
-  - name: webAppName
-    value: 'flaskws'
-  - name: azureServiceConnectionId
-    value: 'f2a9073c-cb6d-46d7-a308-9b4d367a92f1'
+  # Azure Resource Manager connection created during pipeline creation
+  azureServiceConnectionId: '{{ pl-db-labs (f2a9073c-cb6d-46d7-a308-9b4d367a92f1) }}'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+  # Web app name
+  webAppName: '{{ flaskws }}'
 
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  # Environment name
+  environmentName: '{{ flaskws }}'
 
-- script: |
-    python -m venv venv
-    source venv/bin/activate
-    python -m pip install --upgrade pip
-    pip install setup
-    pip install -r requirements.txt
-  workingDirectory: $(projectRoot)
-  displayName: 'Install dependencies and requirements'
-  
-#- task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(Build.SourcesDirectory)'
-#     includeRootFolder: false
-#     archiveType: 'zip'
-#     archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
-#     replaceExistingArchive: true
-#     verbose: # (no value); this input is optional
+  # Project root folder. Point to the folder containing manage.py file.
+  projectRoot: $(System.DefaultWorkingDirectory)
 
-#- publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
-#   displayName: 'Upload package'
-#   artifact: drop
+  # Python version: 3.7
+  pythonVersion: '3.10'
 
-#jobs:
-#- deployment: DeploymentJob
-#pool:
-#  vmImage: $(vmImageName)
-#environment: $(environmentName)
-#strategy:
-#  runOnce:
-#    deploy:
-#      steps:
 
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(pythonVersion)'
-  displayName: 'Use Python version'
 
-- task: AzureWebApp@1
-  displayName: 'Deploy Azure Web App : {{ webAppName }}'
-  inputs:
-    azureSubscription: $(azureServiceConnectionId)
-    appName: $(webAppName)
-    package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-    deploymentMethod: zipDeploy
 
-    # The following parameter is specific to the Flask example code. You may
-    # or may not need a startup command for your app.
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(pythonVersion)'
+      displayName: 'Use Python $(pythonVersion)'
 
-    startUpCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
+    - script: |
+        python -m venv antenv
+        source antenv/bin/activate
+        python -m pip install --upgrade pip
+        pip install setup
+        pip install -r requirements.txt
+      workingDirectory: $(projectRoot)
+      displayName: "Install requirements"
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(projectRoot)'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
+
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      displayName: 'Upload package'
+      artifact: drop
+
+- stage: Deploy
+  displayName: 'Deploy Web App'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: DeploymentJob
+    pool:
+      vmImage: $(vmImageName)
+    environment: $(environmentName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '$(pythonVersion)'
+            displayName: 'Use Python version'
+
+          - task: AzureWebApp@1
+            displayName: 'Deploy Azure Web App : {{ webAppName }}'
+            inputs:
+              azureSubscription: $(azureServiceConnectionId)
+              appName: $(webAppName)
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
