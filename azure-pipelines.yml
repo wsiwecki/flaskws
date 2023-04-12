@@ -11,13 +11,13 @@ variables:
   azureServiceConnectionId: '{{ pl-db-labs (f2a9073c-cb6d-46d7-a308-9b4d367a92f1) }}'
 
   # Web app name
-  webAppName: '{{ flaskws }}'
+  webAppName: 'flaskws'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
   # Environment name
-  environmentName: '{{ flaskws }}'
+  environmentName: 'flaskws'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
