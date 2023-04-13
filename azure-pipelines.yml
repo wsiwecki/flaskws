@@ -14,8 +14,8 @@ variables:
   webAppName: 'flaskws'
 
   # Agent VM image name
-  vmImageName: 'myLinuxVMvsts'
-#  vmImageName: 'ubuntu-latest'
+#  vmImageName: 'myLinuxVMvsts'
+  vmImageName: 'ubuntu-latest'
 
   # Environment name
   environmentName: 'flaskws'
