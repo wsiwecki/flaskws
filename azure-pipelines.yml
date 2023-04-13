@@ -8,7 +8,7 @@ trigger:
 
 variables:
   # Azure Resource Manager connection created during pipeline creation
-  azureServiceConnectionId: 'pl-db-labs-conn2'
+  azureServiceConnectionId: 'udacity_lab100'
 
   # Web app name
   webAppName: 'flaskws'
