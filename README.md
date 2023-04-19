@@ -6,12 +6,14 @@
 <TODO: Project Plan
 
 * A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* A link to a spreadsheet that includes the original and final project plan>:  https://docs.google.com/spreadsheets/d/1LD9J6WBjs48r34Q5RipeMulNv3CYptiQk0NJBGMFYB0/edit?usp=sharing
 
 ## Instructions
 
 <TODO:  
 * Architectural Diagram (Shows how key parts of the system work)>
+* ![image](https://user-images.githubusercontent.com/58573764/233057370-f0a6b54e-49fd-4d10-8c30-37b8fabe8ec7.png)
+
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
 
