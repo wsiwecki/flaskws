@@ -6,6 +6,9 @@
 <TODO: Project Plan
 
 * A link to a Trello board for the project
+
+https://trello.com/invite/b/HPVtYyJR/ATTI53b8619f331e536c95f4123178f9ba4d301ED1B4/azure-devops-ci-cd
+
 * A link to a spreadsheet that includes the original and final project plan>:  https://docs.google.com/spreadsheets/d/1LD9J6WBjs48r34Q5RipeMulNv3CYptiQk0NJBGMFYB0/edit?usp=sharing
 
 ## Instructions
