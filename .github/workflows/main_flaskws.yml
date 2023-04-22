@@ -35,6 +35,10 @@ jobs:
       - name: Lint with pylint
         run: |
           make lint
+
+      - name: Test with pytest
+        run: |
+          make test
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
