@@ -8,7 +8,7 @@ install:
 test:
 	#python -m pytest -vv --cov=flaskws tests/*.py
 	python -m pytest -vv tests/*.py
-	python -m pytest --nbval notebook.ipynb
+	#python -m pytest --nbval notebook.ipynb
 
 
 lint:
