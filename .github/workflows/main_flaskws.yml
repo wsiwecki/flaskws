@@ -22,10 +22,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Create and start virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
+#      - name: Create and start virtual environment
+#        run: |
+#          python -m venv venv
+#          source venv/bin/activate
       
       - name: Install dependencies
         run: |
@@ -38,13 +38,13 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v3
-        with:
-          name: python-app
-          path: |
-            . 
-            !venv/
+#      - name: Upload artifact for deployment jobs
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: python-app
+#          path: |
+#            . 
+#            !venv/
 
   deploy:
     runs-on: ubuntu-latest
