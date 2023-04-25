@@ -15,7 +15,7 @@ https://trello.com/invite/b/HPVtYyJR/ATTI53b8619f331e536c95f4123178f9ba4d301ED1B
 
 <TODO:  
 * Architectural Diagram (Shows how key parts of the system work)>
-* ![image](https://user-images.githubusercontent.com/58573764/233057370-f0a6b54e-49fd-4d10-8c30-37b8fabe8ec7.png)
+* ![00_diagram](https://user-images.githubusercontent.com/58573764/234246730-23d60c6e-aa59-4206-94b4-e4702173fd3c.jpg)
 
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
