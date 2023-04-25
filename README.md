@@ -20,20 +20,44 @@ https://trello.com/invite/b/HPVtYyJR/ATTI53b8619f331e536c95f4123178f9ba4d301ED1B
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
 
-* Project running on Azure App Service
+* Project running on Azure App Service:
+First we have to create ne Web App with seting source on GitHub - our project:
+![06_screenhot_Webb_app_Settings](https://user-images.githubusercontent.com/58573764/234284133-a91b668f-c0fa-48bc-8c52-74b75e350eca.jpg)
+![06_screenhot_Webb_app_Settings](https://user-images.githubusercontent.com/58573764/234284198-9875de9a-7481-4355-a27c-7da8673950a1.jpg)
+
 
 * Project cloned into Azure Cloud Shell
+We can also clone repository of project to our Azure Clound Shell, buy execute git cone - path copied from my repository:
+```bash
+git clone git@github.com:wsiwecki/azure-devops.git
+```
+![01_sceenshot_clone_project_to_Azur_Cloud_Shell](https://user-images.githubusercontent.com/58573764/234284888-2c661324-6b64-4a73-bb11-a306a7500209.jpg)
+
 
 * Passing tests that are displayed after running the `make all` command from the `Makefile`
+Result of runing make all (2 screens) :
+![02_sceenshot_make_all_part_01](https://user-images.githubusercontent.com/58573764/234285060-f3e93c50-e690-4142-9fa6-b0c687bae30c.jpg)
+
+![02_sceenshot_make_all_part_02](https://user-images.githubusercontent.com/58573764/234285114-f988681f-22e8-4cac-98d9-cc7f357ed217.jpg)
 
 * Output of a test run
 
+![image](https://user-images.githubusercontent.com/58573764/234285735-22699a4a-4a1c-46fe-bb2c-9822b9003857.png)
+
+
 * Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+I have succecfully buid and deploy project by GitHub Actions (belowe screenshot) by have some authrntication problems with running Aure pipeline.
+I'm using my copmany account to Poral Azure and have no all possible access to deploy application. Pipeline is configure correctly and connection to Azure works, but I can authorizate only by Managed Identity Authentication with no full access.
+![image](https://user-images.githubusercontent.com/58573764/234287670-d1bcd6bc-63ef-4912-aded-e97ba62a0f8a.png)
+
+In this case I'm sure that I can successfully deploy (setup CI/CD) using GitHub Actions, what I can show as resolve this time:
+![image](https://user-images.githubusercontent.com/58573764/234288063-5c09d8f2-01ce-4daf-865e-59a2882efa83.png)
+
 
 * Running Azure App Service from Azure Pipelines automatic deployment
 
 * Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
+This is my output:
 
 ```bash
 wojciech_siwecki [ ~/flaskws ]$ ./make_predict_azure_app.sh
@@ -43,12 +67,17 @@ Port: 443
 
 * Output of streamed log files from deployed application
 
-[{"log_time":"2023-04-20T13:42:18.4948413Z","id":"5b0487d0-b300-4e7f-905b-98c891ef633c","message":"Updating submodules.","type":0,"details_url":null},{"log_time":"2023-04-20T13:42:19.9101254Z","id":"ef539660-b2e3-491b-8ad1-7d5cfe03f092","message":"Preparing deployment for commit id '234c71d4-0'.","type":0,"details_url":null},{"log_time":"2023-04-20T13:42:20.6949162Z","id":"58db5ec4-e04d-4956-9ba8-52b0926db57a","message":"PreDeployment: context.CleanOutputPath False","type":0,"details_url":null},{"log_time":"2023-04-20T13:42:20.9349184Z","id":"4c32d38c-26c8-4322-8bdc-bf8a89803064","message":"PreDeployment: context.OutputPath /home/site/wwwroot","type":0,"details_url":null},{"log_time":"2023-04-20T13:42:21.4297513Z","id":"5054276f-75fd-4a35-9ea3-7b3800aace02","message":"Repository path is /tmp/zipdeploy/extracted","type":0,"details_url":null},{"log_time":"2023-04-20T13:42:21.6802218Z","id":"0275a7aa-b3b6-4cce-aff8-94bf86c7619a","message":"Running oryx build...","type":0,"details_url":"https://flaskws.scm.azurewebsites.net/api/deployments/234c71d4-0a1a-48d9-a9a0-d6296d431a16/log/0275a7aa-b3b6-4cce-aff8-94bf86c7619a"},{"log_time":"2023-04-20T13:45:37.5071637Z","id":"fa2a5a35-c75a-4002-b766-023df65de838","message":"Running post deployment command(s)...","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:37.6902675Z","id":"310418b1-e981-497e-98c7-2522e7a19b38","message":"","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:37.8706481Z","id":"1a86b455-4998-45ba-ab36-fb371c983265","message":"Generating summary of Oryx build","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:38.0688952Z","id":"f4893742-6b31-44e6-a2b1-e1876bf0f2eb","message":"Parsing the build logs","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:38.1970974Z","id":"0a95a23e-a6c7-41c0-9bc6-1900b2588903","message":"Found 0 issue(s)","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:38.2986218Z","id":"37556505-9672-4c4d-b46e-5a1abcdb10e6","message":"","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:38.4631251Z","id":"1322db72-4374-404a-9d55-0229d890161f","message":"Build Summary :","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:38.6476767Z","id":"14a9980f-ed44-4cdd-9078-27b27b469ccb","message":"===============","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:38.8316054Z","id":"5ae777ec-4ac4-47e3-860e-08abef7bc294","message":"Errors (0)","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:39.0299581Z","id":"c85b3ae1-e4b1-4076-a625-7022c4092c5d","message":"Warnings (0)","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:39.2135824Z","id":"70e09383-6306-43cc-a69b-b5780fd42a2b","message":"","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:39.5397932Z","id":"053cf017-a4b5-4a56-8c7f-e5cd2062af3a","message":"Triggering recycle (preview mode disabled).","type":0,"details_url":null},{"log_time":"2023-04-20T13:45:39.7573572Z","id":"6b853372-f35d-4743-ace7-41aa9c99996d","message":"Deployment successful. deployer = GITHUB_ZIP_DEPLOY deploymentPath = ZipDeploy. Extract zip. Remote build.","type":0,"details_url":null}]
-> 
+![image](https://user-images.githubusercontent.com/58573764/234288582-c1ac0c95-1a4e-4898-9e5e-1794fb582d3b.png)
+
+![image](https://user-images.githubusercontent.com/58573764/234288923-1db615d9-4439-426a-bbcc-e1dd775c1b52.png)
+
 
 ## Enhancements
 
 <TODO: A short description of how to improve the project in the future>
+I am to recive new kind of account with admin access on my own subscription, and can move this project to the subscription.
+But most important is my pararell project - in which I'm using Azure Pipeline with Ansible plugins. In this project I standarized
+and confured almost 20 servers with similar services. It is veru usefully, fast in working and readable by others solutions.
 
 ## Demo 
 
