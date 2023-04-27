@@ -65,6 +65,9 @@ I'm using my copmany account in Azure and have no all possible access to deploy 
 
 In this case I'm sure that I can successfully deploy (setup CI/CD) using GitHub Actions, what I can show as resolve this time:
 
+Link to Actions badge: https://github.com/wsiwecki/flaskws/actions/workflows/main_flaskws.yml/badge.svg
+
+
 ![image](https://user-images.githubusercontent.com/58573764/234288063-5c09d8f2-01ce-4daf-865e-59a2882efa83.png)
 
 
