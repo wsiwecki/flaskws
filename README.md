@@ -97,6 +97,12 @@ Port: 443
 
 ![image](https://user-images.githubusercontent.com/58573764/234288923-1db615d9-4439-426a-bbcc-e1dd775c1b52.png)
 
+Runing Load test using Locust:
+comamn execution:
+```bash
+locust --headless --users 10 --spawn-rate 1 -H https://flaskws.azurewebsites.net:443
+```
+Sample screen with results:
 
 ## Enhancements
 
