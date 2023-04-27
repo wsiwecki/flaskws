@@ -104,6 +104,9 @@ locust --headless --users 10 --spawn-rate 1 -H https://flaskws.azurewebsites.net
 ```
 Sample screen with results:
 
+![image](https://user-images.githubusercontent.com/58573764/234833585-aed5b3b4-fac5-460f-9fcc-fd096656cb4d.png)
+
+
 ## Enhancements
 
 <TODO: A short description of how to improve the project in the future>
